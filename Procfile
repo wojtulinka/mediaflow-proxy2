@@ -1,1 +1,1 @@
-web: python main.py
+web: poetry run gunicorn mediaflow_proxy.main:app -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:$PORT --timeout 120 --max-requests 500 --max-requests-jitter 200 --access-logfile - --error-logfile - --log-level info --forwarded-allow-ips "*"
